@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @relmyer
 - 👀 I’m interested in Application and Embedded Software
-- 🌱 I’m currently learning Java
+- 🌱 I’m currently learning Kotlin
 - 📫 How to reach me: jazklif@gmail.com or www.linkedin.com/in/ebru-a-4b35592b0
 - 😄 Pronouns: She/Her
 
