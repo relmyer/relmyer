@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Ebru Altıner</h1>
 <h3 align="center">I’m interested in Application and Embedded Software</h3>
 
-- 🔭 I’m currently working on Dart/Flutter [digi_care](https://github.com/relmyer/digi_care)
+- 🔭 I’m currently working on Dart/Flutter 
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
