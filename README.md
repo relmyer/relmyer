@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @relmyer
+- 👋 Hi, I’m Ebru Altıner
 - 👀 I’m interested in Application and Embedded Software
 - 🌱 I’m currently learning Dart/Flutter
 - 📫 How to reach me: jazklif@gmail.com or www.linkedin.com/in/ebru-a-4b35592b0
