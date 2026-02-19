@@ -25,11 +25,4 @@ I turn ideas into interfaces.
 
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=relmyer&theme=default" alt="GitHub Streak" />
 
-## GitHub Trophies
-
-<img src="https://github-profile-trophy.vercel.app/?username=relmyer" alt="trophy" />
-
-## GitHub Activity Graph
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=relmyer&radius=16&theme=react&area=true&order=5" height="300" alt="activity-graph" />
 
