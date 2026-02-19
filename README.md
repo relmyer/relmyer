@@ -17,12 +17,6 @@ I turn ideas into interfaces.
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="figma" width="40" height="40"/>&nbsp;
 </p>
 
-## GitHub Stats
 
-<img src="https://github-readme-stats.vercel.app/api?username=relmyer&show_icons=true&count_private=true&theme=default" alt="GitHub İstatistikleri" />
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=relmyer&layout=compact&theme=default" alt="En Çok Kullanılan Diller" />
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=relmyer&theme=default" alt="GitHub Streak" />
 
 
