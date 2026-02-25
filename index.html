@@ -808,6 +808,7 @@
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .float-card { display: none; }
       .projects-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .project-card[style*="span 2"] { grid-column: span 1 !important; }
       .contact-wrapper { grid-template-columns: 1fr; gap: 48px; }
       .hero-stats { gap: 28px; }
       .form-row { grid-template-columns: 1fr; }
@@ -828,6 +829,133 @@
     .tag-firebase { color: #ffca28; }
     .tag-html { color: #e44d26; }
     .tag-css { color: #264de4; }
+    .tag-sql { color: #00758f; }
+    .tag-ae { color: #9999ff; }
+
+    /* ─── Experience / Timeline ──────────────────────────────────── */
+    #experience { padding: 120px 0; background: var(--bg2); }
+    .exp-header { margin-bottom: 56px; }
+
+    .timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 22px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--green-600), transparent);
+    }
+    .timeline-item {
+      display: flex;
+      gap: 32px;
+      padding-bottom: 40px;
+      position: relative;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      flex-shrink: 0;
+      width: 46px; height: 46px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      position: relative; z-index: 1;
+      transition: border-color .3s, background .3s;
+    }
+    .timeline-item:hover .timeline-dot {
+      border-color: rgba(74,222,128,.5);
+      background: rgba(74,222,128,.07);
+    }
+    .timeline-body {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      transition: border-color .3s, transform .3s;
+    }
+    .timeline-item:hover .timeline-body {
+      border-color: rgba(74,222,128,.25);
+      transform: translateX(4px);
+    }
+    .timeline-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 6px; flex-wrap: wrap; gap: 8px;
+    }
+    .timeline-role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+    .timeline-period {
+      font-size: .75rem;
+      color: var(--green-400);
+      background: rgba(74,222,128,.08);
+      border: 1px solid rgba(74,222,128,.15);
+      border-radius: 100px;
+      padding: 3px 10px;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+    .timeline-company {
+      font-size: .875rem;
+      color: var(--green-300);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .timeline-desc {
+      color: var(--text-dim);
+      font-size: .85rem;
+      line-height: 1.65;
+    }
+    .timeline-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+    .timeline-tag {
+      font-size: .7rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: rgba(74,222,128,.07);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+    .badge-active {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: .7rem; font-weight: 600;
+      color: var(--green-400);
+      background: rgba(74,222,128,.08);
+      border: 1px solid rgba(74,222,128,.2);
+      border-radius: 100px;
+      padding: 3px 10px;
+    }
+    .badge-active::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--green-400);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    /* ─── Project detail meta grid ───────────────────────────────── */
+    .project-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 16px 0;
+      padding: 16px;
+      background: rgba(74,222,128,.04);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .meta-item { }
+    .meta-label { font-size: .68rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
+    .meta-value { font-size: .82rem; font-weight: 500; }
   </style>
 </head>
 <body>
@@ -863,6 +991,7 @@
 
   <ul class="nav-links">
     <li><a href="#about">Hakkımda</a></li>
+    <li><a href="#experience">Deneyim</a></li>
     <li><a href="#skills">Yetenekler</a></li>
     <li><a href="#projects">Projeler</a></li>
     <li><a href="#process">Süreç</a></li>
@@ -939,7 +1068,7 @@
         <div class="about-card">
           <div class="about-avatar">🌿</div>
           <div class="about-card-name">Ebru Altıner</div>
-          <div class="about-card-role">UI/UX Designer & Frontend Developer</div>
+          <div class="about-card-role">Product Designer & UI/UX Developer</div>
           <div class="about-card-line"></div>
           <div class="about-card-items">
             <div class="about-item">
@@ -947,12 +1076,12 @@
               <span>Türkiye</span>
             </div>
             <div class="about-item">
-              <div class="about-item-icon">🎓</div>
-              <span>Frontend & Mobil Geliştirme</span>
+              <div class="about-item-icon">💼</div>
+              <span>VisiBuy · Loopix Games</span>
             </div>
             <div class="about-item">
               <div class="about-item-icon">✨</div>
-              <span>Figma, React, Flutter</span>
+              <span>Figma, Flutter, After Effects</span>
             </div>
             <div class="about-item">
               <div class="about-item-icon">🔗</div>
@@ -1004,6 +1133,69 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPERIENCE ───────────────────────────────────────────────────── -->
+<section id="experience">
+  <div class="container">
+    <div class="exp-header">
+      <div class="section-tag reveal">Deneyim</div>
+      <h2 class="section-title reveal reveal-delay-1">Nerede <span class="accent">çalıştım?</span></h2>
+      <p class="section-desc reveal reveal-delay-2">Gerçek ürünlerde, gerçek ekiplerle kazandığım deneyimler</p>
+    </div>
+
+    <div class="timeline">
+
+      <!-- VisiBuy -->
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-dot">🛒</div>
+        <div class="timeline-body">
+          <div class="timeline-top">
+            <div class="timeline-role">Product Designer</div>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+              <span class="badge-active">Devam Ediyor</span>
+              <span class="timeline-period">Ekim 2025 — Halen</span>
+            </div>
+          </div>
+          <div class="timeline-company">VisiBuy</div>
+          <p class="timeline-desc">
+            E-ticaret odaklı bir girişimde product designer olarak görev alıyorum. Kullanıcı araştırmasından wireframe'e, prototipten geliştirici teslimatına kadar tüm ürün tasarım süreçlerini yönetiyorum.
+          </p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Product Design</span>
+            <span class="timeline-tag">Figma</span>
+            <span class="timeline-tag">User Research</span>
+            <span class="timeline-tag">Prototyping</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loopix Games -->
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-dot">🎮</div>
+        <div class="timeline-body">
+          <div class="timeline-top">
+            <div class="timeline-role">UI/UX Designer</div>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+              <span class="badge-active">Devam Ediyor</span>
+              <span class="timeline-period">Ekim 2025 — Halen</span>
+            </div>
+          </div>
+          <div class="timeline-company">Loopix Games</div>
+          <p class="timeline-desc">
+            Oyun stüdyosunda UI/UX designer olarak çalışıyorum. Oyun içi arayüzler, onboarding akışları ve mobil uygulamalar için kullanıcı deneyimi tasarlıyorum.
+          </p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Game UI</span>
+            <span class="timeline-tag">Figma</span>
+            <span class="timeline-tag">Motion Design</span>
+            <span class="timeline-tag">After Effects</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1067,6 +1259,13 @@
         <div class="skill-name">Firebase</div>
         <div class="skill-level">Backend & DB</div>
       </div>
+      <div class="skill-card reveal reveal-delay-4">
+        <div class="skill-icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" />
+        </div>
+        <div class="skill-name">SQL</div>
+        <div class="skill-level">Veritabanı</div>
+      </div>
     </div>
 
     <!-- Proficiency bars -->
@@ -1092,6 +1291,10 @@
           <div class="bar-header"><span class="bar-name">Firebase</span><span class="bar-pct">75%</span></div>
           <div class="bar-track"><div class="bar-fill" data-width="75"></div></div>
         </div>
+        <div class="bar-item">
+          <div class="bar-header"><span class="bar-name">SQL</span><span class="bar-pct">70%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="70"></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1112,44 +1315,49 @@
 
     <div class="projects-grid">
 
-      <!-- Project 1 -->
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-thumb">
-          <div class="project-thumb-bg" style="background:linear-gradient(135deg,#0a2a0a,#0d3d1a);"></div>
-          <div class="project-thumb-icon">📱</div>
-          <div class="project-tag-row">
-            <span class="project-tag tag-flutter">Flutter</span>
-            <span class="project-tag tag-firebase">Firebase</span>
-          </div>
-        </div>
-        <div class="project-body">
-          <h3 class="project-title">Flutter Mobil Uygulama</h3>
-          <p class="project-desc">Dart ile geliştirilmiş, Firebase entegrasyonlu cross-platform mobil uygulama. Kullanıcı dostu arayüz ve gerçek zamanlı veri senkronizasyonu.</p>
-          <div class="project-footer">
-            <div class="project-links">
-              <a href="https://github.com/relmyer" target="_blank" class="project-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                GitHub
-              </a>
-            </div>
-            <span class="project-status status-live">Tamamlandı</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 2 -->
-      <div class="project-card reveal reveal-delay-2">
-        <div class="project-thumb">
-          <div class="project-thumb-bg" style="background:linear-gradient(135deg,#0a1a2e,#0d2d4d);"></div>
-          <div class="project-thumb-icon">🎨</div>
+      <!-- Pulsight — Featured -->
+      <div class="project-card reveal reveal-delay-1" style="grid-column: span 2;">
+        <div class="project-thumb" style="height:220px;">
+          <div class="project-thumb-bg" style="background:linear-gradient(135deg,#0d0a1a,#1a0d35,#0a0d2a);"></div>
+          <!-- Decorative circles -->
+          <div style="position:absolute;width:180px;height:180px;border-radius:50%;border:1px solid rgba(153,153,255,.15);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+          <div style="position:absolute;width:120px;height:120px;border-radius:50%;border:1px solid rgba(153,153,255,.2);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+          <div class="project-thumb-icon" style="font-size:2.8rem;">📊</div>
           <div class="project-tag-row">
             <span class="project-tag tag-figma">Figma</span>
-            <span class="project-tag tag-react">React</span>
+            <span class="project-tag tag-ae">After Effects</span>
+            <span class="project-tag tag-flutter">Flutter</span>
           </div>
         </div>
         <div class="project-body">
-          <h3 class="project-title">UI/UX Tasarım Sistemi</h3>
-          <p class="project-desc">Figma'da tasarlayıp React ile hayata geçirdiğim kapsamlı bir design system. Bileşen kütüphanesi, renk sistemi ve tipografi rehberi.</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:10px;">
+            <h3 class="project-title" style="margin-bottom:0;">Pulsight</h3>
+            <span class="project-status status-wip">Devam Ediyor</span>
+          </div>
+          <p style="color:var(--green-300);font-size:.85rem;font-style:italic;margin-bottom:12px;">
+            "Trendlerin verileri elinin altında"
+          </p>
+          <p class="project-desc">
+            Kullanıcıların trend verilerini anlık takip edebildiği, veri görselleştirme odaklı bir mobil uygulama. UI/UX tasarımının yanı sıra Flutter ile mobil geliştirme süreçlerini de yürütüyorum. After Effects ile motion animasyonlar hazırlandı.
+          </p>
+          <div class="project-meta">
+            <div class="meta-item">
+              <div class="meta-label">Rol</div>
+              <div class="meta-value">UI/UX Designer · Mobile Developer</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Teknolojiler</div>
+              <div class="meta-value">Figma · After Effects · Flutter</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Süre</div>
+              <div class="meta-value">2 ay (devam ediyor)</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Durum</div>
+              <div class="meta-value" style="color:var(--green-400);">● Aktif</div>
+            </div>
+          </div>
           <div class="project-footer">
             <div class="project-links">
               <a href="https://github.com/relmyer" target="_blank" class="project-link">
@@ -1157,33 +1365,66 @@
                 GitHub
               </a>
             </div>
-            <span class="project-status status-live">Tamamlandı</span>
           </div>
         </div>
       </div>
 
-      <!-- Project 3 -->
-      <div class="project-card reveal reveal-delay-3">
+      <!-- VisiBuy Projesi -->
+      <div class="project-card reveal reveal-delay-2">
         <div class="project-thumb">
-          <div class="project-thumb-bg" style="background:linear-gradient(135deg,#1a0a2e,#2d0d4d);"></div>
-          <div class="project-thumb-icon">🌐</div>
+          <div class="project-thumb-bg" style="background:linear-gradient(135deg,#0a1a10,#0d3322);"></div>
+          <div class="project-thumb-icon">🛒</div>
           <div class="project-tag-row">
-            <span class="project-tag tag-react">React</span>
-            <span class="project-tag tag-js">JavaScript</span>
-            <span class="project-tag tag-css">CSS3</span>
+            <span class="project-tag tag-figma">Figma</span>
+            <span class="project-tag" style="color:#aaa;">Product Design</span>
           </div>
         </div>
         <div class="project-body">
-          <h3 class="project-title">Web Uygulaması</h3>
-          <p class="project-desc">React ve modern CSS teknikleri kullanılarak geliştirilen responsive web uygulaması. Animasyonlar, smooth scroll ve interaktif componentler.</p>
-          <div class="project-footer">
-            <div class="project-links">
-              <a href="https://github.com/relmyer" target="_blank" class="project-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                GitHub
-              </a>
+          <h3 class="project-title">VisiBuy — Product Design</h3>
+          <p class="project-desc">E-ticaret girişimi VisiBuy için kullanıcı araştırması, wireframe ve high-fidelity tasarım süreçleri. Kullanıcı akışları, bileşen sistemi ve geliştirici teslimatları.</p>
+          <div class="project-meta">
+            <div class="meta-item">
+              <div class="meta-label">Rol</div>
+              <div class="meta-value">Product Designer</div>
             </div>
-            <span class="project-status status-wip">Devam Ediyor</span>
+            <div class="meta-item">
+              <div class="meta-label">Araçlar</div>
+              <div class="meta-value">Figma · FigJam</div>
+            </div>
+          </div>
+          <div class="project-footer">
+            <div></div>
+            <span class="project-status status-wip">Aktif</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loopix Games Projesi -->
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-thumb">
+          <div class="project-thumb-bg" style="background:linear-gradient(135deg,#0a0a1f,#1a102e);"></div>
+          <div class="project-thumb-icon">🎮</div>
+          <div class="project-tag-row">
+            <span class="project-tag tag-figma">Figma</span>
+            <span class="project-tag tag-ae">After Effects</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Loopix Games — Game UI</h3>
+          <p class="project-desc">Oyun içi UI sistemleri, onboarding ekranları ve mobil uygulama arayüzleri. After Effects ile oyun içi animasyon ve hareket tasarımları.</p>
+          <div class="project-meta">
+            <div class="meta-item">
+              <div class="meta-label">Rol</div>
+              <div class="meta-value">UI/UX Designer</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Araçlar</div>
+              <div class="meta-value">Figma · After Effects</div>
+            </div>
+          </div>
+          <div class="project-footer">
+            <div></div>
+            <span class="project-status status-wip">Aktif</span>
           </div>
         </div>
       </div>
