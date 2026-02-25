@@ -832,99 +832,91 @@
     .tag-sql { color: #00758f; }
     .tag-ae { color: #9999ff; }
 
-    /* ─── Experience / Timeline ──────────────────────────────────── */
+    /* ─── Experience / Cards ─────────────────────────────────────── */
     #experience { padding: 120px 0; background: var(--bg2); }
     .exp-header { margin-bottom: 56px; }
 
-    .timeline {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 22px;
-      top: 8px;
-      bottom: 8px;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--green-600), transparent);
-    }
-    .timeline-item {
-      display: flex;
-      gap: 32px;
-      padding-bottom: 40px;
-      position: relative;
-    }
-    .timeline-item:last-child { padding-bottom: 0; }
-    .timeline-dot {
-      flex-shrink: 0;
-      width: 46px; height: 46px;
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-      position: relative; z-index: 1;
-      transition: border-color .3s, background .3s;
-    }
-    .timeline-item:hover .timeline-dot {
-      border-color: rgba(74,222,128,.5);
-      background: rgba(74,222,128,.07);
-    }
-    .timeline-body {
-      flex: 1;
+    @media (max-width: 700px) { .exp-grid { grid-template-columns: 1fr; } }
+
+    .exp-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      transition: border-color .3s, transform .3s;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      transition: border-color .3s, transform .3s, box-shadow .3s;
     }
-    .timeline-item:hover .timeline-body {
-      border-color: rgba(74,222,128,.25);
-      transform: translateX(4px);
+    .exp-card:hover {
+      border-color: rgba(74,222,128,.3);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,.25), 0 0 30px rgba(74,222,128,.06);
     }
-    .timeline-top {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 6px; flex-wrap: wrap; gap: 8px;
+
+    .exp-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
     }
-    .timeline-role {
+    .exp-logo {
+      width: 52px; height: 52px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      background: rgba(74,222,128,.08);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .exp-info { flex: 1; min-width: 0; }
+    .exp-role {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 1.05rem;
       font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 4px;
     }
-    .timeline-period {
-      font-size: .75rem;
-      color: var(--green-400);
-      background: rgba(74,222,128,.08);
-      border: 1px solid rgba(74,222,128,.15);
-      border-radius: 100px;
-      padding: 3px 10px;
-      white-space: nowrap;
-      font-weight: 500;
-    }
-    .timeline-company {
+    .exp-company {
       font-size: .875rem;
       color: var(--green-300);
-      font-weight: 500;
-      margin-bottom: 10px;
+      font-weight: 600;
+      margin-bottom: 6px;
     }
-    .timeline-desc {
+    .exp-period {
+      font-size: .72rem;
       color: var(--text-dim);
-      font-size: .85rem;
-      line-height: 1.65;
+      display: flex; align-items: center; gap: 6px;
     }
-    .timeline-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
-    .timeline-tag {
-      font-size: .7rem;
+    .exp-period::before {
+      content: '';
+      display: inline-block;
+      width: 14px; height: 1px;
+      background: var(--text-dim);
+      opacity: .4;
+    }
+
+    .exp-card-divider {
+      height: 1px;
+      background: var(--border);
+    }
+
+    .exp-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .exp-tag {
+      font-size: .72rem;
       font-weight: 500;
-      padding: 3px 10px;
-      border-radius: 6px;
+      padding: 4px 12px;
+      border-radius: 100px;
       background: rgba(74,222,128,.07);
-      border: 1px solid var(--border);
-      color: var(--text-dim);
+      border: 1px solid rgba(74,222,128,.12);
+      color: var(--green-300);
+      letter-spacing: .02em;
     }
+
     .badge-active {
       display: inline-flex; align-items: center; gap: 5px;
       font-size: .7rem; font-weight: 600;
@@ -932,7 +924,8 @@
       background: rgba(74,222,128,.08);
       border: 1px solid rgba(74,222,128,.2);
       border-radius: 100px;
-      padding: 3px 10px;
+      padding: 4px 10px;
+      align-self: flex-start;
     }
     .badge-active::before {
       content: '';
@@ -1146,53 +1139,49 @@
       <p class="section-desc reveal reveal-delay-2">Gerçek ürünlerde, gerçek ekiplerle kazandığım deneyimler</p>
     </div>
 
-    <div class="timeline">
+    <div class="exp-grid">
 
       <!-- VisiBuy -->
-      <div class="timeline-item reveal reveal-delay-1">
-        <div class="timeline-dot">🛒</div>
-        <div class="timeline-body">
-          <div class="timeline-top">
-            <div class="timeline-role">Product Designer</div>
-            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-              <span class="badge-active">Devam Ediyor</span>
-              <span class="timeline-period">Ekim 2025 — Halen</span>
-            </div>
+      <div class="exp-card reveal reveal-delay-1">
+        <div class="exp-card-top">
+          <div class="exp-logo">🛒</div>
+          <div class="exp-info">
+            <div class="exp-role">Product Designer</div>
+            <div class="exp-company">VisiBuy</div>
+            <div class="exp-period">Ekim 2025 — Halen</div>
           </div>
-          <div class="timeline-company">VisiBuy</div>
-          <p class="timeline-desc">
-            E-ticaret odaklı bir girişimde product designer olarak görev alıyorum. Kullanıcı araştırmasından wireframe'e, prototipten geliştirici teslimatına kadar tüm ürün tasarım süreçlerini yönetiyorum.
-          </p>
-          <div class="timeline-tags">
-            <span class="timeline-tag">Product Design</span>
-            <span class="timeline-tag">Figma</span>
-            <span class="timeline-tag">User Research</span>
-            <span class="timeline-tag">Prototyping</span>
-          </div>
+        </div>
+        <div class="exp-card-divider"></div>
+        <div>
+          <span class="badge-active">Devam Ediyor</span>
+        </div>
+        <div class="exp-tags">
+          <span class="exp-tag">Product Design</span>
+          <span class="exp-tag">Figma</span>
+          <span class="exp-tag">User Research</span>
+          <span class="exp-tag">Prototyping</span>
         </div>
       </div>
 
       <!-- Loopix Games -->
-      <div class="timeline-item reveal reveal-delay-2">
-        <div class="timeline-dot">🎮</div>
-        <div class="timeline-body">
-          <div class="timeline-top">
-            <div class="timeline-role">UI/UX Designer</div>
-            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-              <span class="badge-active">Devam Ediyor</span>
-              <span class="timeline-period">Ekim 2025 — Halen</span>
-            </div>
+      <div class="exp-card reveal reveal-delay-2">
+        <div class="exp-card-top">
+          <div class="exp-logo">🎮</div>
+          <div class="exp-info">
+            <div class="exp-role">UI/UX Designer</div>
+            <div class="exp-company">Loopix Games</div>
+            <div class="exp-period">Ekim 2025 — Halen</div>
           </div>
-          <div class="timeline-company">Loopix Games</div>
-          <p class="timeline-desc">
-            Oyun stüdyosunda UI/UX designer olarak çalışıyorum. Oyun içi arayüzler, onboarding akışları ve mobil uygulamalar için kullanıcı deneyimi tasarlıyorum.
-          </p>
-          <div class="timeline-tags">
-            <span class="timeline-tag">Game UI</span>
-            <span class="timeline-tag">Figma</span>
-            <span class="timeline-tag">Motion Design</span>
-            <span class="timeline-tag">After Effects</span>
-          </div>
+        </div>
+        <div class="exp-card-divider"></div>
+        <div>
+          <span class="badge-active">Devam Ediyor</span>
+        </div>
+        <div class="exp-tags">
+          <span class="exp-tag">Game UI</span>
+          <span class="exp-tag">Figma</span>
+          <span class="exp-tag">Motion Design</span>
+          <span class="exp-tag">After Effects</span>
         </div>
       </div>
 
