@@ -1,0 +1,74 @@
+name: pawcalm
+description: "PawCalm - The Reactive Dog Owner's Companion. Find calm spots, track progress, and get AI-powered training plans."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI & Navigation
+  go_router: ^13.0.0
+  flutter_animate: ^4.5.0
+  google_fonts: ^6.2.1
+  cached_network_image: ^3.3.1
+
+  # Maps
+  google_maps_flutter: ^2.6.0
+  geolocator: ^11.0.0
+  geocoding: ^3.0.0
+
+  # State Management
+  provider: ^6.1.2
+  shared_preferences: ^2.2.3
+
+  # Backend & AI
+  http: ^1.2.1
+  dio: ^5.4.3
+  flutter_dotenv: ^5.1.0
+
+  # Charts & Analytics
+  fl_chart: ^0.68.0
+
+  # Firebase
+  firebase_core: ^3.4.0
+  firebase_auth: ^5.2.0
+  cloud_firestore: ^5.4.0
+  firebase_storage: ^12.2.0
+
+  # Image & Media
+  image_picker: ^1.1.2
+  flutter_svg: ^2.0.10+1
+
+  # Utils
+  intl: ^0.19.0
+  uuid: ^4.4.0
+  permission_handler: ^11.3.1
+  url_launcher: ^6.3.0
+  share_plus: ^9.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  build_runner: ^2.4.9
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - .env
+
+  fonts:
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/Nunito-Regular.ttf
+        - asset: assets/fonts/Nunito-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Nunito-SemiBold.ttf
+          weight: 600
