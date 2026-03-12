@@ -1,0 +1,37 @@
+{
+  "_comment": "Replace this file with your actual google-services.json from Firebase Console",
+  "_instructions": [
+    "1. Go to https://console.firebase.google.com",
+    "2. Create a new project named 'StepSphere'",
+    "3. Add an Android app with package name: com.stepsphere.app",
+    "4. Download google-services.json and replace this file",
+    "5. Also enable: Authentication (Email/Password), Firestore, Storage",
+    "6. Run: flutterfire configure"
+  ],
+  "project_info": {
+    "project_number": "YOUR_PROJECT_NUMBER",
+    "project_id": "stepsphere-app",
+    "storage_bucket": "stepsphere-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "YOUR_ANDROID_APP_ID",
+        "android_client_info": {
+          "package_name": "com.stepsphere.app"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "YOUR_API_KEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
